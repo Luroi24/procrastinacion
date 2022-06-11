@@ -179,3 +179,10 @@ input:not([type="submit"]), .input-group-text{
     box-shadow: 0 0 0 2px white, 0 0 0 3px var(--principal);
     font-weight: bold;
 }
+
+.question{
+    text-align: center;
+    font-size: 1.125rem;
+    margin: 1rem 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

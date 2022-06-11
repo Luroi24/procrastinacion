@@ -4,6 +4,44 @@ const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
 const hasPartner = document.getElementById("der_cony_no");
+const allQuestions = document.querySelectorAll(".options");
+
+for(i=0 ; i < allQuestions.length; i++){
+	for(j=0 ; j < 5; j++){
+		let txt =""
+		const division = document.createElement("div");
+		division.className = "form-check form-check-inline";
+		allQuestions[i].appendChild(division);
+
+		const divLabel = document.createElement("label");
+		divLabel.className = "form-check-label my-2";
+		divLabel.setAttribute("for",'OE'+(i+1)+'-'+(j+1));
+		switch(j){
+			case 0: txt = "Nunca";
+			break;
+			case 1: txt = "Casi nunca";
+			break;
+			case 2: txt = "A veces";
+			break;
+			case 3: txt = "Casi siempre";
+			break;
+			case 4: txt = "Siempre";
+			break;
+		}
+		const labeltext = document.createTextNode(txt);
+		divLabel.appendChild(labeltext);
+
+		const divInput = document.createElement("input");
+		divInput.type = "radio";
+		divInput.className = "form-check-input";
+		divInput.setAttribute("id",'OE'+(i+1)+'-'+(j+1));
+		divInput.setAttribute("name",'OE'+(i+1));
+		divInput.setAttribute("required",'true');
+
+		division.appendChild(divLabel);
+		division.appendChild(divInput);
+	}
+}
 
 let formStepsNum = 0;
 
@@ -30,8 +68,22 @@ prevBtns.forEach(btn =>{
 });
 
 function checkVal(){
-	let errors = 0;
-	let campos = document.querySelectorAll(".form-step-active .needs-validation");
+	let errors = 0, flag = 0;
+	const campos = document.querySelectorAll(".form-step-active .needs-validation");
+	for( i=0 ; i < campos.length; i++){
+		const options = campos[i].querySelectorAll("input");
+		for( j = 0 ; j < options.length; j++){
+			if(options[j].checked){
+				campos[i].classList.remove("is-invalid");
+				campos[i].classList.add("is-valid");
+				break;
+			}
+		}
+		if(!campos[i].classList.contains("is-valid")){
+			campos[i].classList.add("is-invalid");
+			errors++;
+		}
+	}
 	return errors;
 }
 
@@ -63,39 +115,3 @@ document.getElementsByTagName("form")[0].onkeypress = function(e) {
       e.preventDefault();
     }
   }
-
-/* Funciones de cálculo automático */
-
-function calcularEdad() {
-  	const date = new Date(document.getElementById('kid_birthday').value).getTime();
-  	const now = new Date().getTime();
-  	var age = Math.floor((now - date ) / (1000 * 60 * 60 * 24 * 365));
-    (document.getElementById('kid_age')).value = age;  
-}
-
-/* Image related JS */
-
-const inpFile = document.querySelectorAll(".inpFile");
-const previewContainer = document.querySelectorAll(".image-preview");
-
-inpFile.forEach(inpFile=>{
-	inpFile.addEventListener("change", function(){
-	   const file = this.files[0];
-	   const clsImg = this.nextElementSibling.firstElementChild;
-	   const clsTxt = this.nextElementSibling.firstElementChild.nextElementSibling;
-		if(file){
-			const reader = new FileReader();
-			clsTxt.style.display="none";
-			clsImg.style.display = "block";
-
-			reader.addEventListener("load",function(){
-				clsImg.setAttribute("src",this.result);
-			});
-			reader.readAsDataURL(file);
-	}else{
-			clsTxt.style.display=null;
-			clsImg.style.display = null;
-			clsImg.setAttribute("src","")
-		}
-	});
-});
