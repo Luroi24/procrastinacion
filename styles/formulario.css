@@ -1,6 +1,6 @@
 :root{
     --principal: #57cc99;
-    --principal-ultra-light: #B27B9B;
+    --principal-ultra-light: #c7f9cc;
 }
 
 *,*::before,*::after{
@@ -109,7 +109,7 @@ h2, h3{
 
 .form{
     background-color: white;
-    width: min(32rem,90%);
+    width: min(39rem,90%);
     margin: 1rem;
     border: 1px solid #ccc;
     border-radius: 0.35rem;
