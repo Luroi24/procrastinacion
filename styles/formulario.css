@@ -38,6 +38,10 @@ h2, h3{
     margin: 0.75rem 0;
 }
 
+h3{
+    text-align: center;
+}
+
 .progressbar{
     position: relative;
     display: flex;
@@ -181,8 +185,12 @@ input:not([type="submit"]), .input-group-text{
 }
 
 .question{
-    text-align: center;
+    text-align: justify;
     font-size: 1.125rem;
     margin: 1rem 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hidden{
+    display: none;
 }
