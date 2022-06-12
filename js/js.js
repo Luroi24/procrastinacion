@@ -103,7 +103,7 @@ function checkVal(){
 
 function activateRes(){
 	const indicator = (indexProc/84)*100;
-	if(indicator >0 && indicator <= 20 ){
+	if(indicator >=0 && indicator <= 20 ){
 		document.getElementById("score-20").classList.remove("hidden");
 	}
 	else if(indicator > 20 && indicator <= 40){
@@ -115,7 +115,7 @@ function activateRes(){
 	else if(indicator > 60 && indicator <= 80){
 		document.getElementById("score-80").classList.remove("hidden");
 	}
-	else{
+	else if(indicator > 80 && indicator <= 100){
 		document.getElementById("score-100").classList.remove("hidden");
 	}
 }
