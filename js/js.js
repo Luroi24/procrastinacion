@@ -102,7 +102,7 @@ function checkVal(){
 }
 
 function activateRes(){
-	const indicator = (indexProc/105)*100;
+	const indicator = (indexProc/84)*100;
 	if(indicator >0 && indicator <= 20 ){
 		document.getElementById("score-20").classList.remove("hidden");
 	}
