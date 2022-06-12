@@ -21,19 +21,19 @@ for(i=0 ; i < allQuestions.length; i++){
 		divLabel.setAttribute("for",'OE'+(i+1)+'-'+(j+1));
 		switch(j){
 			case 0: txt = "Nunca";
-					val = 1;
+					val = 0;
 			break;
 			case 1: txt = "Casi nunca";
-					val = 2;
+					val = 1;
 			break;
 			case 2: txt = "A veces";
-					val = 3;
+					val = 2;
 			break;
 			case 3: txt = "Casi siempre";
-					val = 4;
+					val = 3;
 			break;
 			case 4: txt = "Siempre";
-					val = 5;
+					val = 4;
 			break;
 		}
 		const labeltext = document.createTextNode(txt);
